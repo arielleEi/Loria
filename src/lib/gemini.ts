@@ -1,17 +1,32 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
-function getClient() {
-  const key = process.env.GEMINI_API_KEY;
-  if (!key || key === "your_gemini_api_key_here") {
-    throw new Error("GEMINI_API_KEY is not configured");
+async function callGroq(prompt: string): Promise<string> {
+  const key = process.env.GROQ_API_KEY;
+  if (!key || key === "your_groq_api_key_here") {
+    throw new Error("GROQ_API_KEY is not configured");
   }
-  return new GoogleGenerativeAI(key);
+
+  const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${key}`,
+    },
+    body: JSON.stringify({
+      model: "llama-3.3-70b-versatile",
+      messages: [{ role: "user", content: prompt }],
+      temperature: 0.7,
+    }),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`Groq API error: ${response.status} ${errText}`);
+  }
+
+  const data = await response.json();
+  return data.choices?.[0]?.message?.content ?? "";
 }
 
 export async function summarizePDF(text: string, language = "fr"): Promise<string> {
-  const genAI = getClient();
-  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-
   const prompt = `Tu es un expert en synthèse de documents. Résume le document suivant en ${language === "fr" ? "français" : language === "en" ? "anglais" : language === "es" ? "espagnol" : language === "ar" ? "arabe" : "français"}.
 
 Structure ta réponse ainsi :
@@ -27,8 +42,7 @@ Structure ta réponse ainsi :
 Document à résumer :
 ${text.substring(0, 8000)}`;
 
-  const result = await model.generateContent(prompt);
-  return result.response.text();
+  return callGroq(prompt);
 }
 
 export async function generateCV(data: {
@@ -45,9 +59,6 @@ export async function generateCV(data: {
   tone: string;
   outputLanguage: string;
 }): Promise<{ cv: string; coverLetter: string }> {
-  const genAI = getClient();
-  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-
   const lang = data.outputLanguage === "fr" ? "français" : data.outputLanguage === "en" ? "anglais" : data.outputLanguage === "es" ? "espagnol" : "français";
   const toneStr = data.tone === "formal" ? "formel et professionnel" : data.tone === "creative" ? "créatif et dynamique" : "moderne et assertif";
 
@@ -73,15 +84,9 @@ Compétences : ${data.skills}
 
 La lettre doit : accroche forte, 3 paragraphes (motivation, valeur ajoutée, appel à l'action), max 350 mots, personnalisée et convaincante.`;
 
-  const [cvResult, clResult] = await Promise.all([
-    model.generateContent(cvPrompt),
-    model.generateContent(clPrompt),
-  ]);
+  const [cv, coverLetter] = await Promise.all([callGroq(cvPrompt), callGroq(clPrompt)]);
 
-  return {
-    cv: cvResult.response.text(),
-    coverLetter: clResult.response.text(),
-  };
+  return { cv, coverLetter };
 }
 
 export async function correctText(
@@ -89,9 +94,6 @@ export async function correctText(
   mode: "correct" | "rephrase" | "formal" | "simplify",
   language = "fr"
 ): Promise<string> {
-  const genAI = getClient();
-  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-
   const lang = language === "fr" ? "français" : language === "en" ? "anglais" : language === "es" ? "espagnol" : language === "ar" ? "arabe" : language === "de" ? "allemand" : "français";
 
   const modeInstructions: Record<string, string> = {
@@ -106,6 +108,5 @@ export async function correctText(
 Texte :
 "${text}"`;
 
-  const result = await model.generateContent(prompt);
-  return result.response.text();
+  return callGroq(prompt);
 }
