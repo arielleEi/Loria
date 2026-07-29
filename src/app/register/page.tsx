@@ -83,7 +83,7 @@ export default function RegisterPage() {
             Commencez gratuitement
           </h1>
           <p style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
-            5 générations offertes · Aucune carte requise
+            20 générations offertes · Aucune carte requise
           </p>
         </div>
 

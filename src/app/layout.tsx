@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 export const metadata: Metadata = {
   title: "Liora — IA pour vos documents",
   description:
-    "Résumez vos PDFs, générez CV & lettres de motivation, corrigez vos textes avec l'IA Gemini.",
+    "Résumez vos PDFs, générez CV & lettres de motivation, corrigez vos textes avec l'IA Groq.",
   icons: { icon: "/favicon.ico" },
   openGraph: {
     title: "Liora — IA pour vos documents",

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Check, Zap, Crown, CreditCard } from "lucide-react";
 
 const freeFeatures = [
-  "5 générations IA / mois",
+  "20 générations IA / mois",
   "Résumé PDF (jusqu'à 10 pages)",
   "Générateur CV de base",
   "Correcteur de texte",

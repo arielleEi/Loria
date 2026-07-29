@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
         .update(users)
         .set({
           plan: isActive ? "pro" : "free",
-          creditsLimit: isActive ? 300 : 5,
+          creditsLimit: isActive ? 300 : 20,
           updatedAt: new Date(),
         })
         .where(eq(users.id, userId));
@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
 
       await db
         .update(users)
-        .set({ plan: "free", creditsLimit: 5, updatedAt: new Date() })
+        .set({ plan: "free", creditsLimit: 20, updatedAt: new Date() })
         .where(eq(users.id, userId));
 
       await db

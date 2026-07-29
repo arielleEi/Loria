@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
         passwordHash,
         plan: "free",
         creditsUsed: 0,
-        creditsLimit: 5,
+        creditsLimit: 20,
         creditsResetAt: new Date(),
       })
       .returning();

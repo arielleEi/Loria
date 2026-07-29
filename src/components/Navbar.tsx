@@ -197,7 +197,6 @@ function NavLinks({ mobile, onClick }: { mobile?: boolean; onClick?: () => void 
     <div style={style}>
       {[
         { href: "/#tools", label: "Outils" },
-        { href: "/pricing", label: "Tarifs" },
       ].map((l) => (
         <Link
           key={l.href}

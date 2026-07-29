@@ -103,14 +103,14 @@ export default function DashboardPage() {
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.9rem" }}>
               {user.plan === "pro"
                 ? "Vous êtes sur le plan Pro · 300 générations/mois"
-                : "Plan gratuit · 5 générations/mois"}
+                : "Plan gratuit · 20 générations/mois"}
             </p>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
             <span className={user.plan === "pro" ? "badge-pro" : "badge-free"}>
               {user.plan === "pro" ? "✨ Pro" : "Gratuit"}
             </span>
-            {user.plan === "free" && (
+            {false && user.plan === "free" && (
               <Link href="/pricing">
                 <button
                   style={{
@@ -205,7 +205,7 @@ export default function DashboardPage() {
             <p style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
               {user.plan === "pro"
                 ? "300 génér. · Tous les outils"
-                : "5 génér. · Outils basiques"}
+                : "20 génér. · Outils basiques"}
             </p>
           </div>
 
@@ -280,7 +280,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Upgrade CTA for free users */}
-        {user.plan === "free" && (
+        {false && user.plan === "free" && (
           <div
             style={{
               background: "linear-gradient(135deg, rgba(124,58,237,0.1), rgba(6,182,212,0.1))",

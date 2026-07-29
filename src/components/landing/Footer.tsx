@@ -55,7 +55,7 @@ export default function Footer() {
               </span>
             </div>
             <p style={{ color: "var(--text-muted)", fontSize: "0.875rem", lineHeight: 1.6 }}>
-              L&apos;IA au service de vos documents. Propulsé par Gemini.
+              L&apos;IA au service de vos documents. Propulsé par Groq.
             </p>
           </div>
 
@@ -182,10 +182,10 @@ export default function Footer() {
           }}
         >
           <p style={{ color: "var(--text-muted)", fontSize: "0.8rem" }}>
-            © 2024 Liora. Tous droits réservés.
+            © {new Date().getFullYear()} Liora. Tous droits réservés.
           </p>
           <p style={{ color: "var(--text-muted)", fontSize: "0.8rem" }}>
-            Fait avec ❤️ · Propulsé par Gemini AI
+            Fait avec ❤️ · Propulsé par Groq AI
           </p>
         </div>
       </div>

@@ -29,7 +29,7 @@ export const users = pgTable("users", {
   name: varchar("name", { length: 255 }).notNull(),
   plan: planEnum("plan").default("free").notNull(),
   creditsUsed: integer("credits_used").default(0).notNull(),
-  creditsLimit: integer("credits_limit").default(5).notNull(),
+  creditsLimit: integer("credits_limit").default(20).notNull(),
   creditsResetAt: timestamp("credits_reset_at").defaultNow().notNull(),
   stripeCustomerId: text("stripe_customer_id"),
   createdAt: timestamp("created_at").defaultNow().notNull(),

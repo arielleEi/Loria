@@ -76,7 +76,7 @@ export async function checkAndConsumeCredit(
       ok: false,
       message:
         user.plan === "free"
-          ? "Limite gratuite atteinte (5/mois). Passez à Pro pour 300 générations/mois."
+          ? "Limite gratuite atteinte (20/mois). Passez à Pro pour 300 générations/mois."
           : "Limite mensuelle atteinte (300/mois). Renouvellement le mois prochain.",
     };
   }

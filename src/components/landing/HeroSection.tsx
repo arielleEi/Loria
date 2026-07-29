@@ -57,7 +57,7 @@ export default function HeroSection() {
           }}
         >
           <Sparkles size={14} />
-          Propulsé par Gemini AI
+          Propulsé par Groq AI
           <Star size={12} fill="#7c3aed" />
         </div>
 
@@ -109,14 +109,6 @@ export default function HeroSection() {
               <ArrowRight size={18} />
             </button>
           </Link>
-          <Link href="/pricing">
-            <button
-              className="btn-secondary"
-              style={{ fontSize: "1rem", padding: "0.8rem 2rem" }}
-            >
-              Voir les tarifs
-            </button>
-          </Link>
         </div>
 
         {/* Feature pills */}
@@ -162,7 +154,7 @@ export default function HeroSection() {
             color: "var(--text-muted)",
           }}
         >
-          ✓ 5 générations gratuites · ✓ Annulation en 1 clic · ✓ Données sécurisées
+          ✓ 20 générations gratuites · ✓ Annulation en 1 clic · ✓ Données sécurisées
         </p>
       </div>
     </section>

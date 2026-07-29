@@ -19,7 +19,7 @@ const proFeatures = [
 ];
 
 const freeFeatures = [
-  "5 générations IA / mois",
+  "20 générations IA / mois",
   "Résumé PDF (jusqu'à 10 pages)",
   "Générateur CV de base",
   "Correcteur de texte",
@@ -328,7 +328,7 @@ export default function PricingPage() {
               {[
                 {
                   q: "Comment fonctionne la limite gratuite ?",
-                  a: "Vous avez 5 générations par mois, tous outils confondus. Le compteur se remet à zéro le 1er de chaque mois. Aucune carte bancaire requise.",
+                  a: "Vous avez 20 générations par mois, tous outils confondus. Le compteur se remet à zéro le 1er de chaque mois. Aucune carte bancaire requise.",
                 },
                 {
                   q: "Comment annuler mon abonnement Pro ?",

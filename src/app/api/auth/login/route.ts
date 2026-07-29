@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
         email: user.email,
         plan: user.plan,
         creditsUsed: user.creditsUsed,
-        creditsLimit: user.plan === "pro" ? 300 : 5,
+        creditsLimit: user.plan === "pro" ? 300 : 20,
       },
     });
   } catch (error) {
