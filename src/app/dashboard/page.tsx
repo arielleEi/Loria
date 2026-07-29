@@ -110,7 +110,8 @@ export default function DashboardPage() {
             <span className={user.plan === "pro" ? "badge-pro" : "badge-free"}>
               {user.plan === "pro" ? "✨ Pro" : "Gratuit"}
             </span>
-            {false && user.plan === "free" && (
+            {/* Upgrade button hidden until payments are set up
+            {user.plan === "free" && (
               <Link href="/pricing">
                 <button
                   style={{
@@ -132,6 +133,7 @@ export default function DashboardPage() {
                 </button>
               </Link>
             )}
+            */}
             {user.plan === "pro" && (
               <button
                 onClick={handleManageSubscription}
@@ -280,7 +282,8 @@ export default function DashboardPage() {
         </div>
 
         {/* Upgrade CTA for free users */}
-        {false && user.plan === "free" && (
+        {/* Upgrade CTA hidden until payments are set up
+        {user.plan === "free" && (
           <div
             style={{
               background: "linear-gradient(135deg, rgba(124,58,237,0.1), rgba(6,182,212,0.1))",
@@ -310,6 +313,7 @@ export default function DashboardPage() {
             </Link>
           </div>
         )}
+        */}
       </div>
     </div>
   );
